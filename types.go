@@ -145,7 +145,9 @@ type Contract struct {
 	CollectFloor *float64    `json:"collect_floor,omitempty"`
 	AlwaysHuman  *bool       `json:"always_human,omitempty"`
 	// AuditSampleRate: fração (0 a 1) das decisões auto sorteadas para auditoria.
-	AuditSampleRate float64             `json:"audit_sample_rate,omitempty"`
+	AuditSampleRate float64 `json:"audit_sample_rate,omitempty"`
+	// Model é o modelo de julgamento do contrato (veja Models); vazio = padrão do serviço.
+	Model           string              `json:"model,omitempty"`
 	MaxStateChars   int                 `json:"max_state_chars,omitempty"`
 	StateFields     []StateField        `json:"state_fields,omitempty"`
 	Questions       map[string]Question `json:"questions"`
@@ -171,7 +173,9 @@ type ContractInput struct {
 	CollectFloor *float64    `json:"collect_floor,omitempty"`
 	AlwaysHuman  *bool       `json:"always_human,omitempty"`
 	// AuditSampleRate: fração (0 a 1) das decisões auto sorteadas para auditoria.
-	AuditSampleRate float64             `json:"audit_sample_rate,omitempty"`
+	AuditSampleRate float64 `json:"audit_sample_rate,omitempty"`
+	// Model é o modelo de julgamento do contrato (veja Models); vazio = padrão do serviço.
+	Model           string              `json:"model,omitempty"`
 	MaxStateChars   int                 `json:"max_state_chars,omitempty"`
 	StateFields     []StateField        `json:"state_fields,omitempty"`
 	Questions       map[string]Question `json:"questions"`

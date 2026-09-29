@@ -26,6 +26,10 @@ if err != nil {
 }
 ```
 
+Para escolher o modelo, use `Model: "nace/drex-latest"` no `FanoutRequest` ou no contrato;
+`c.Models(ctx)` lista os disponíveis (Jev e Drex, mesmo preço por token; comparação em
+https://jevaas.com.br/model#escolha).
+
 Com contrato publicado, `c.Judge(ctx, jev.JudgeRequest{Contract: "ticket-router", State: …})`
 devolve `Route` e `Enforced`: só aja com `auto` **e** `Enforced`.
 

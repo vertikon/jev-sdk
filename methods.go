@@ -236,6 +236,24 @@ func (c *Client) Quota(ctx context.Context) (*Quota, error) {
 	return &out, nil
 }
 
+// ModelList é a resposta de GET /models.
+type ModelList struct {
+	Default string `json:"default"`
+	Models  []struct {
+		ID       string `json:"id"`
+		Provider string `json:"provider"`
+	} `json:"models"`
+}
+
+// Models devolve os modelos que o inquilino pode escolher em `model` e o padrão.
+func (c *Client) Models(ctx context.Context) (*ModelList, error) {
+	var out ModelList
+	if err := c.do(ctx, "GET", "/models", nil, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 // Usage devolve a série diária. from/to vazios usam os últimos 30 dias.
 func (c *Client) Usage(ctx context.Context, from, to string) (*UsageReport, error) {
 	q := url.Values{}
